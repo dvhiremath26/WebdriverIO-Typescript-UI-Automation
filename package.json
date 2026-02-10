@@ -1,0 +1,66 @@
+{
+  "name": "webdriverio-typescript-ui-automation",
+  "version": "1.0.0",
+  "description": "WebdriverIO-Typescript-UI-Automation",
+  "main": "index.js",
+  "scripts": {
+    "allure:open": "allure serve allure-results",
+    "clean": "rimraf ./allure-results && rimraf ./downloads",
+    "prepare": "husky",
+    "check-only": "git diff --cached --name-only | grep -E \"\\.(js|ts|jsx|tsx)$\" | xargs -r grep -l -E \"(test|describe|it)\\.only\" && (echo ❌ Commit blocked: test.only or .only found in staged files && exit 1) || echo ✅ No .only found in staged files.",
+    "pre-commit": "npm run check-only && lint-staged",
+    "lint": "eslint \"**/*.ts\" --fix",
+    "format": "prettier --write \"**/*.{ts,json}\"",
+    "comment:01":"-----------------Test Commands-----------------------------------------------------",
+    "test": "npm run clean && wdio run wdio.conf.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvhiremath26/WebdriverIO-Typescript-UI-Automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dvhiremath26/WebdriverIO-Typescript-UI-Automation/issues"
+  },
+  "homepage": "https://github.com/dvhiremath26/WebdriverIO-Typescript-UI-Automation#readme",
+  "devDependencies": {
+    "@types/jasmine": "^6.0.0",
+    "@types/node": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@typescript-eslint/parser": "^8.48.0",
+    "@wdio/allure-reporter": "^9.24.0",
+    "@wdio/cli": "^9.24.0",
+    "@wdio/globals": "^9.23.0",
+    "@wdio/jasmine-framework": "^9.24.0",
+    "@wdio/local-runner": "^9.24.0",
+    "@wdio/spec-reporter": "^9.24.0",
+    "allure-commandline": "^2.36.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.4",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "expect-webdriverio": "^5.6.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "rimraf": "^6.1.2",
+    "typescript-eslint": "^8.55.0",
+    "wdio-wait-for": "^3.1.1"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "npm run format"
+    ],
+    "*.yaml": [
+      "npm run format"
+    ],
+    "*.{md,json,html,yml }": [
+      "npm run format"
+    ],
+    "*.js": "es-lint --cache --fix"
+  }
+}
