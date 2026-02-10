@@ -7,11 +7,10 @@
     "allure:open": "allure serve allure-results",
     "clean": "rimraf ./allure-results && rimraf ./downloads",
     "prepare": "husky",
-    "check-only": "git diff --cached --name-only | grep -E \"\\.(js|ts|jsx|tsx)$\" | xargs -r grep -l -E \"(test|describe|it)\\.only\" && (echo ❌ Commit blocked: test.only or .only found in staged files && exit 1) || echo ✅ No .only found in staged files.",
     "pre-commit": "npm run check-only && lint-staged",
     "lint": "eslint \"**/*.ts\" --fix",
     "format": "prettier --write \"**/*.{ts,json}\"",
-    "comment:01":"-----------------Test Commands-----------------------------------------------------",
+    "comment:01": "-----------------Test Commands-----------------------------------------------------",
     "test": "npm run clean && wdio run wdio.conf.ts"
   },
   "repository": {
