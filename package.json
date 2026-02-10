@@ -7,7 +7,7 @@
     "allure:open": "allure serve allure-results",
     "clean": "rimraf ./allure-results && rimraf ./downloads",
     "prepare": "husky",
-    "pre-commit": "npm run check-only && lint-staged",
+    "pre-commit": "lint-staged",
     "lint": "eslint \"**/*.ts\" --fix",
     "format": "prettier --write \"**/*.{ts,json}\"",
     "comment:01": "-----------------Test Commands-----------------------------------------------------",
